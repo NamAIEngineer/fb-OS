@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://group-pilot.local/schemas/fb-group-suite-e2e-receipt.json",
+  "title": "GroupPilot independent E2E receipt",
+  "type": "object",
+  "required": ["schemaVersion", "kind", "status", "startedAt", "finishedAt", "results"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "enum": ["baseline", "product", "mock", "visual-diff", "verifier"] },
+    "status": { "enum": ["PASS", "FAIL", "UNKNOWN", "SKIPPED"] },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "finishedAt": { "type": "string", "format": "date-time" },
+    "baseUrl": { "type": ["string", "null"] },
+    "profileDir": { "type": ["string", "null"] },
+    "reason": { "type": ["string", "null"] },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["routeId", "path", "viewport", "status", "observedAt"],
+        "properties": {
+          "routeId": { "type": "string" },
+          "path": { "type": "string" },
+          "viewport": {
+            "type": "object",
+            "required": ["width", "height"],
+            "properties": { "width": { "type": "integer" }, "height": { "type": "integer" } }
+          },
+          "status": { "enum": ["PASS", "FAIL", "UNKNOWN", "SKIPPED"] },
+          "observedAt": { "type": "string", "format": "date-time" },
+          "httpStatus": { "type": ["integer", "null"] },
+          "finalUrl": { "type": ["string", "null"] },
+          "authState": { "enum": ["anonymous", "anonymous-redirect", "unknown"] },
+          "screenshot": { "type": ["string", "null"] },
+          "consoleErrors": { "type": "array", "items": { "type": "string" } },
+          "pageErrors": { "type": "array", "items": { "type": "string" } },
+          "durationMs": { "type": "integer", "minimum": 0 },
+          "reason": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

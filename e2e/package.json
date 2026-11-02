@@ -1,0 +1,13 @@
+{
+  "name": "@grouppilot/e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test --config=playwright.config.mjs",
+    "test:list": "playwright test --config=playwright.config.mjs --list",
+    "install:browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

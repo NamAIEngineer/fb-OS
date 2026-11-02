@@ -1,0 +1,6 @@
+# Runtime-only browser profiles, screenshots, traces, and receipts.
+.profiles/
+artifacts/
+playwright-report/
+test-results/
+*.trace.zip

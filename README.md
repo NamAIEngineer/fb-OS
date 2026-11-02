@@ -16,6 +16,12 @@ The API listens on `http://127.0.0.1:4000` and the Vite web app on `http://127.0
 
 Demo account: `demo@grouppilot.local` / `demo-password`. Demo vouchers: `GP-BASIC-DEMO`, `GP-PLUS-DEMO`, `GP-PRO-DEMO`.
 
+Feature routes mount behind bearer auth in `apps/api/src/server.ts` for accounts,
+daily usage, jobs, posts/templates, groups, campaigns, interactions,
+auto-comment, Page inbox, and friend collections. Existing worker services use
+mock executors only; no Facebook call occurs. The web router registers the
+worker pages, group library/collections, and pending/fulfilled/rejected views.
+
 Docker:
 
 ```bash

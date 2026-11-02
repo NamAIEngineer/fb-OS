@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && esbuild src/server.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/server.js --external:express --external:cors --external:socket.io --external:sql.js --external:jsonwebtoken --external:@grouppilot/shared && esbuild src/feature-entry.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/feature-routes.js --external:express --external:cors --external:socket.io --external:sql.js --external:jsonwebtoken --external:@grouppilot/shared",
     "start": "node dist/server.js",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
@@ -24,6 +24,7 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "esbuild": "^0.25.12"
   }
 }
