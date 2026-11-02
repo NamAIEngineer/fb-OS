@@ -1,0 +1,17 @@
+{
+  "name": "grouppilot-suite",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"corepack pnpm --filter @grouppilot/api dev\" \"corepack pnpm --filter @grouppilot/web dev\"",
+    "dev:api": "corepack pnpm --filter @grouppilot/api dev",
+    "dev:web": "corepack pnpm --filter @grouppilot/web dev",
+    "build": "corepack pnpm --filter @grouppilot/shared build && corepack pnpm --filter @grouppilot/api build && corepack pnpm --filter @grouppilot/web build",
+    "start": "corepack pnpm --filter @grouppilot/api start",
+    "typecheck": "corepack pnpm --filter @grouppilot/shared typecheck && corepack pnpm --filter @grouppilot/api typecheck && corepack pnpm --filter @grouppilot/web typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      DATABASE_PATH: /var/lib/grouppilot/grouppilot.sqlite
+    volumes:
+      - grouppilot-data:/var/lib/grouppilot
+
+  web:
+    image: node:22-alpine
+    working_dir: /workspace
+    command: sh -c "corepack enable && pnpm install --frozen-lockfile && pnpm --filter @grouppilot/web dev --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ..:/workspace
+    depends_on:
+      - api
+
+volumes:
+  grouppilot-data:
