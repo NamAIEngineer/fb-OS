@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "GroupPilot bridge",
+  "version": "0.1.0",
+  "description": "Local GroupPilot web-to-extension protocol seam.",
+  "background": {
+    "service_worker": "dist/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://localhost/*",
+        "https://127.0.0.1/*"
+      ],
+      "js": ["dist/content-bridge.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "GroupPilot bridge"
+  }
+}

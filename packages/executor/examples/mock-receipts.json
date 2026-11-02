@@ -1,0 +1,35 @@
+[
+  {
+    "receiptId": "mock-0001",
+    "action": "postToGroup",
+    "accountId": "account-1",
+    "status": "completed",
+    "externalExecution": false,
+    "createdAt": "2026-11-02T00:00:00.000Z",
+    "finishedAt": "2026-11-02T00:00:00.000Z",
+    "detail": "MOCK_ONLY: postToGroup accepted; no external execution",
+    "requestId": "fixture-01"
+  },
+  {
+    "receiptId": "mock-0002",
+    "action": "joinGroup",
+    "accountId": "account-2",
+    "status": "completed",
+    "externalExecution": false,
+    "createdAt": "2026-11-02T00:00:00.000Z",
+    "finishedAt": "2026-11-02T00:00:00.000Z",
+    "detail": "MOCK_ONLY: joinGroup accepted; no external execution",
+    "requestId": "fixture-02"
+  },
+  {
+    "receiptId": "mock-0003",
+    "action": "replyPageComment",
+    "accountId": "account-3",
+    "status": "completed",
+    "externalExecution": false,
+    "createdAt": "2026-11-02T00:00:00.000Z",
+    "finishedAt": "2026-11-02T00:00:00.000Z",
+    "detail": "MOCK_ONLY: replyPageComment accepted; no external execution",
+    "requestId": "fixture-03"
+  }
+]
