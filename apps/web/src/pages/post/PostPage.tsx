@@ -193,19 +193,15 @@ export default function PostPage({ apiBaseUrl = "", planTier = "BASIC", accountI
   const groupInput = draft.groupIds.join(", ");
   return (
     <main className="post-page" data-testid="post-page">
-      <header className="post-page__header">
-        <div>
-          <h1>Đăng bài &amp; Bình luận</h1>
-          <p className="post-page__evidence">MockExecutor · lưu dữ liệu cục bộ · chưa thực hiện hành động Facebook</p>
-        </div>
-        <div className="post-page__header-actions">
-          <button type="button" onClick={() => void saveDraft()} disabled={busy} data-testid="save-draft">Lưu tạm</button>
-          <button type="button" onClick={() => void loadTemplates()} data-testid="open-templates">Thư viện mẫu</button>
-        </div>
-      </header>
-
       <section className="post-page__layout">
         <section className="post-page__main">
+          <div className="post-account-bar">
+            <span className="post-account-bar__label">Tài khoản:</span>
+            <button type="button" className="post-account-bar__icon" aria-label="Thêm tài khoản">+</button>
+            <button type="button" className="post-account-bar__icon" aria-label="Thông tin tài khoản">ⓘ</button>
+            <button type="button" className="post-account-bar__icon" aria-label="Cài đặt tài khoản">⚙</button>
+            <button type="button" className="post-account-bar__icon" aria-label="Làm mới tài khoản">↻</button>
+          </div>
           <div className="post-card" data-testid="post-editor-card">
             <div className="post-card__title-row">
               <h2>Đăng bài</h2>
@@ -240,6 +236,9 @@ export default function PostPage({ apiBaseUrl = "", planTier = "BASIC", accountI
                 >
                   ↗
                 </button>
+                <span className="post-card__title-spacer" />
+                <button type="button" className="post-card__action" onClick={() => patchDraft({ updatedAt: new Date().toISOString() })}>⟳ <span>Làm mới</span></button>
+                <button type="button" className="post-card__action" onClick={() => void loadTemplates()} data-testid="open-templates">▤ <span>Thư viện mẫu</span></button>
               </div>
             </div>
             <div className="post-tabs" role="tablist" aria-label="8 biến thể bài đăng">
@@ -301,19 +300,16 @@ export default function PostPage({ apiBaseUrl = "", planTier = "BASIC", accountI
         </section>
 
         <aside className="post-page__aside">
-          <section className="post-card aside-card">
-            <h2>Bộ sưu tập</h2>
-            <p className="empty-state">Chọn nhóm để lưu bộ sưu tập yêu thích.</p>
-            <button type="button" onClick={() => notify({ kind: "info", text: "Bộ sưu tập nhóm được lưu qua API nhóm" })}>Lưu bộ sưu tập</button>
-          </section>
-          <section className="post-card aside-card">
-            <h2>Quản lý bài</h2>
-            <div className="stack-actions">
-              <button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Tất cả" })}>Tất cả</button>
-              <button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Chờ duyệt" })}>Chờ duyệt</button>
-              <button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Đã đăng" })}>Đã đăng</button>
+          <section className="post-card aside-card aside-card--management">
+            <div className="aside-line"><strong>Bộ sưu tập:</strong><span>Chưa có bộ sưu tập</span><button type="button" aria-label="Thông tin bộ sưu tập">⋮</button></div>
+            <div className="aside-line aside-line--delete"><strong>Xóa bài:</strong><div className="stack-actions"><button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Tất cả" })}>Tất cả</button><button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Chờ duyệt" })}>Chờ duyệt</button><button type="button" onClick={() => notify({ kind: "info", text: "Lọc: Đã đăng" })}>Đã đăng</button></div></div>
+            <div className="aside-line"><strong>Rời nhóm:</strong><label className="switch-label"><input type="checkbox" checked={draft.leaveGroupAfterPost} onChange={(event) => patchDraft({ leaveGroupAfterPost: event.target.checked })} /><span className="switch-ui" aria-hidden="true" /></label></div>
+            <p className="aside-warning">Chưa chọn tài khoản Facebook</p>
+            <div className="group-table-shell">
+              <div className="group-table-toolbar"><span className="group-table-toolbar__count">0</span><input className="group-table-toolbar__search" placeholder="⌕ Tìm kiếm" aria-label="Tìm kiếm nhóm" /><button type="button">⟳ Làm mới</button><button type="button" disabled>Lưu</button><button type="button">Xuất CSV</button></div>
+              <div className="group-table-header"><span>□</span><strong>Tên nhóm ↕</strong><strong>TV nhóm ↕</strong><strong>Bài/ngày ↕</strong><strong>TV mới ↕</strong><strong>Duyệt bài ↕</strong></div>
+              <div className="group-table-empty"><span className="group-table-empty__icon">▤</span><span>Không tìm thấy nhóm</span></div>
             </div>
-            <label className="switch-label"><input type="checkbox" checked={draft.leaveGroupAfterPost} onChange={(event) => patchDraft({ leaveGroupAfterPost: event.target.checked })} /> <span>Rời nhóm</span></label>
           </section>
         </aside>
       </section>

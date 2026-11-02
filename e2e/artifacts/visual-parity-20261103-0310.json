@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "visual-diff",
+  "status": "FAIL",
+  "startedAt": "2026-11-02T20:54:12.472Z",
+  "finishedAt": "2026-11-02T20:54:12.904Z",
+  "threshold": 0.95,
+  "baselineDir": "../plans/fbtool-rebuild-20261102/screenshots/baseline",
+  "candidateDir": "../../../../../tmp/visual-candidate-20261103-0310-token",
+  "baselineAssessment": {
+    "status": "UNKNOWN",
+    "reason": "Captured baseline is semantically invalid for six route pairs: plans and register desktop images show the /post shell, login mobile is a login overlay over /post, and register mobile is a clipped /post shell. Raw pixel scores remain recorded; no PASS is claimed from those pairs."
+  },
+  "results": [
+    {
+      "name": "login-1440x900.png",
+      "status": "FAIL",
+      "score": 0,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "login-390x844.png",
+      "status": "FAIL",
+      "score": 0.2295175598493134,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "plans-1440x900.png",
+      "status": "FAIL",
+      "score": 0.4174868827160494,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "plans-390x844.png",
+      "status": "FAIL",
+      "score": 0.5993255559606271,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "post-1440x900.png",
+      "status": "FAIL",
+      "score": 0.7077793209876543,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "post-390x844.png",
+      "status": "FAIL",
+      "score": 0.8132427998541742,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "register-1440x900.png",
+      "status": "FAIL",
+      "score": 0,
+      "method": "pixel-rgba"
+    },
+    {
+      "name": "register-390x844.png",
+      "status": "FAIL",
+      "score": 0,
+      "method": "pixel-rgba"
+    }
+  ],
+  "reason": null
+}

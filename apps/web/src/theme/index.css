@@ -1,44 +1,80 @@
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #1f2937;
-  background: #f7f8fa;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #201515;
+  background: #f8f4f0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; background: #f7f8fa; }
+html, body, #root { min-height: 100%; }
+body { margin: 0; min-width: 320px; background: #f8f4f0; color: #201515; }
 a { color: inherit; }
-.app-shell { min-height: 100vh; }
-.app-sider { background: #fff !important; border-right: 1px solid #eef0f3; }
-.app-brand { height: 64px; display: flex; align-items: center; padding: 0 22px; font-weight: 800; color: #ff7a00; font-size: 20px; letter-spacing: -.02em; }
-.app-brand small { display: block; margin-left: 8px; color: #475569; font-size: 11px; font-weight: 500; }
-.app-main { min-height: 100vh; }
-.app-header { background: #fff !important; border-bottom: 1px solid #eef0f3; padding: 0 24px !important; display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
-.app-content { padding: 28px; }
-.page-card { background: #fff; border: 1px solid #edf0f3; border-radius: 14px; padding: 24px; box-shadow: 0 5px 18px rgba(15, 23, 42, .04); }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+.app-shell { min-height: 100vh; background: #f8f4f0; }
+.app-sider { position: relative; background: #fffefb !important; border-right: 1px solid #c5c0b1; }
+.app-brand { display: flex; align-items: center; gap: 10px; height: 64px; padding: 0 20px; color: #201515; text-decoration: none; border-bottom: 1px solid #c5c0b1; }
+.app-brand__mark { position: relative; display: inline-flex; flex-direction: column; justify-content: center; gap: 3px; width: 28px; height: 28px; padding: 4px; border: 2px solid #1677c8; border-radius: 2px; transform: skewY(-28deg); }
+.app-brand__mark span { display: block; height: 3px; background: #1677c8; border-radius: 1px; }
+.app-brand__mark span:nth-child(2) { width: 80%; align-self: center; background: #4bb6ff; }
+.app-brand__mark span:nth-child(3) { width: 60%; align-self: center; background: #4bb6ff; }
+.app-brand__title { font-size: 18px; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; white-space: nowrap; }
+.app-sider .ant-menu { border-inline-end: 0; background: transparent; padding: 4px; }
+.app-sider .ant-menu-item { height: 50px; margin: 0 0 2px; padding-inline: 20px !important; border-radius: 4px; color: #201515; }
+.app-sider .ant-menu-item .anticon { font-size: 15px; }
+.app-sider .ant-menu-item .anticon { margin-inline-end: 10px; }
+.app-sider .ant-menu-item-selected { color: #ff4f00 !important; background: #fff5ee !important; }
+.app-sider .ant-menu-item-selected::after { display: none; }
+.app-sidebar__footer { position: absolute; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; gap: 2px; padding: 16px 20px 14px; border-top: 1px solid #c5c0b1; background: #fffefb; }
+.app-sidebar__footer a { display: flex; align-items: center; gap: 12px; min-height: 36px; color: #201515; font-size: 14px; text-decoration: none; }
+.app-sidebar__footer a:hover { color: #ff4f00; }
+.app-main { min-height: 100vh; background: #f8f4f0; }
+.app-header { display: flex; align-items: center; justify-content: flex-end; gap: 14px; height: 64px; padding: 0 24px !important; line-height: 1; background: #fffefb !important; border-bottom: 1px solid #c5c0b1; }
+.app-header__actions { display: flex; align-items: center; gap: 32px; }
+.app-header__bell { color: #201515; font-size: 16px; }
+.app-header__avatar { height: 40px; padding: 0; border: 0 !important; }
+.app-header__avatar .ant-avatar { background: #c5c5c5; color: #fffefb; }
+.app-header .ant-tag { margin-inline-end: 0; }
+.app-header .ant-btn { border-color: #c5c0b1; color: #201515; box-shadow: none; }
+.app-header .ant-btn:hover { border-color: #ff4f00; color: #ff4f00; }
+.app-header > .health-dot, .app-header__optional { display: none; }
+.app-content { padding: 0; background: #f8f4f0; }
+.health-dot { display: inline-flex; align-items: center; gap: 7px; margin-right: auto; color: #939084; font-size: 12px; }
+.health-dot::before { width: 8px; height: 8px; content: ""; border-radius: 50%; background: #c5c0b1; }
+.health-dot.ok::before { background: #52c41a; }
+.page-card { padding: 24px; background: #fffefb; border: 1px solid #c5c0b1; border-radius: 8px; box-shadow: 0 1px 2px #2015150d; }
 .page-title { margin: 0 0 20px !important; }
-.health-dot { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: #64748b; }
-.health-dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; }
-.health-dot.ok::before { background: #22c55e; }
-.pricing-page { max-width: 1240px; margin: 0 auto; }
-.pricing-heading { text-align: center; margin: 5px 0 26px; }
-.pricing-heading h1 { margin: 0 0 8px; font-size: 32px; }
-.pricing-heading p { margin: 0; color: #64748b; }
+.pricing-page { max-width: 1240px; margin: 0 auto; padding: 24px 24px 48px; }
+.pricing-heading { margin: 0 0 28px; text-align: center; }
+.pricing-heading h1 { margin: 0 0 8px; color: #201515; font-size: 30px; font-weight: 700; letter-spacing: .04em; }
+.pricing-heading p { margin: 0; color: #605d52; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
-.plan-card { position: relative; display: flex; flex-direction: column; min-height: 610px; padding: 28px 24px 22px; border: 1px solid #e6e8ec; border-radius: 14px; background: #fff; box-shadow: 0 8px 26px rgba(15, 23, 42, .05); }
-.plan-card.recommended { border: 2px solid #ff7a00; box-shadow: 0 12px 32px rgba(255, 122, 0, .16); }
-.plan-ribbon { position: absolute; top: -13px; right: 18px; padding: 5px 12px; border-radius: 999px; color: #fff; background: #ff7a00; font-size: 11px; font-weight: 800; letter-spacing: .05em; }
-.plan-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.plan-name { font-size: 18px; font-weight: 800; letter-spacing: .08em; }
-.plan-lifetime { color: #64748b; border: 1px solid #dce1e7; border-radius: 999px; padding: 4px 9px; font-size: 11px; white-space: nowrap; }
-.plan-price { margin: 18px 0 6px; color: #111827; font-size: 32px; font-weight: 800; letter-spacing: -.03em; }
-.recommended .plan-price { color: #ff7a00; }
-.plan-description { min-height: 46px; color: #64748b; font-size: 13px; line-height: 1.55; }
-.plan-features { display: grid; gap: 10px; margin: 22px 0; padding: 0; list-style: none; color: #334155; font-size: 13px; line-height: 1.4; }
+.plan-card { position: relative; display: flex; flex-direction: column; min-height: 610px; padding: 24px 20px 20px; background: #fffefb; border: 1px solid #c5c0b1; border-radius: 8px; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.plan-card:hover { transform: translateY(-2px); border-color: #ff4f00; box-shadow: 0 12px 28px #ff4f001a; }
+.plan-card.recommended { border: 2px solid #ff4f00; background: linear-gradient(180deg, #ff4f000a, #fffefb 55%); box-shadow: 0 12px 32px #ff4f001a; }
+.plan-ribbon { position: absolute; top: -13px; right: 18px; padding: 5px 12px; color: #fffefb; background: #ff4f00; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: .08em; box-shadow: 0 4px 10px #ff4f0059; }
+.plan-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; }
+.plan-name { color: #2f2a26; font-size: 18px; font-weight: 700; letter-spacing: .08em; }
+.plan-lifetime { display: inline-flex; align-items: center; margin-left: auto; padding: 4px 10px; color: #ff4f00; background: #ff4f001f; border: 1px solid #ff4f0047; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.plan-price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 20px; color: #201515; font-size: 30px; font-weight: 800; line-height: 1.1; letter-spacing: -.02em; }
+.recommended .plan-price { color: #ff4f00; }
+.plan-description { min-height: 58px; margin-bottom: 20px; color: #4b4a45; font-size: 13.5px; line-height: 1.6; }
+.plan-features { display: grid; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; color: #2f2a26; font-size: 13px; line-height: 1.45; }
 .plan-features li { position: relative; padding-left: 22px; }
-.plan-features li::before { content: "✓"; position: absolute; left: 0; color: #ff7a00; font-weight: 800; }
-.plan-footer { margin-top: auto; }
-.auth-wrap { max-width: 440px; margin: 55px auto; }
+.plan-features li::before { position: absolute; left: 0; color: #ff4f00; content: "✓"; font-weight: 800; }
+.plan-footer { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.plan-footer .ant-btn-primary, .pricing-page .ant-btn-primary { height: 34px; color: #fffefb; background: #1677ff; border-color: #1677ff; box-shadow: none; }
+.plan-footer .ant-btn-primary:hover, .pricing-page .ant-btn-primary:hover { color: #fffefb; background: #4096ff; border-color: #4096ff; }
+.auth-wrap { max-width: 440px; margin: 56px auto; padding: 0 16px; }
 .auth-wrap .page-card { padding: 32px; }
-@media (max-width: 960px) { .pricing-grid { grid-template-columns: 1fr; } .plan-card { min-height: unset; } .app-content { padding: 18px; } }
+.auth-wrap .ant-typography { color: #201515; }
+.auth-wrap .ant-typography-secondary { color: #939084; }
+.auth-wrap .ant-form-item-label > label { color: #201515; }
+.auth-wrap .ant-input, .auth-wrap .ant-input-affix-wrapper { border-color: #c5c0b1; border-radius: 6px; }
+.auth-wrap .ant-btn-primary { height: 38px; background: #ff4f00; border-color: #ff4f00; box-shadow: none; }
+.auth-wrap .ant-btn-primary:hover { background: #e64700; border-color: #e64700; }
+.auth-wrap a { color: #1677ff; }
+@media (max-width: 960px) { .pricing-grid { grid-template-columns: 1fr; } .plan-card { min-height: unset; } .pricing-page { padding: 18px 12px 36px; } }
+@media (max-width: 600px) { .app-header { padding: 0 8px !important; gap: 6px; } .health-dot, .app-header__optional { display: none; } .app-header__actions { gap: 32px; } .app-brand__title { font-size: 16px; } }
