@@ -1,0 +1,5 @@
+.accounts-page { max-width: 1180px; margin: 0 auto; }
+.accounts-avatar { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: #e8f1ff; color: #1877f2; font-weight: 700; }
+.accounts-limit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.accounts-limit-grid label { display: grid; gap: 6px; }
+@media (max-width: 720px) { .accounts-limit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
